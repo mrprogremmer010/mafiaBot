@@ -10,6 +10,8 @@ client = commands.Bot(command_prefix = "!")
 
 @client.event
 async def on_ready():
+    await client.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.playing, name=f'mafia with {client.guilds} servers'))
     print("bot is online")
 
 
