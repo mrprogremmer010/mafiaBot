@@ -39,8 +39,9 @@ async def join(ctx):
         # players.append(author)
         pc_choice = random.choice(choice)
         players[author] = pc_choice
+        choices = " ".join(players.keys())
         await channel.send(f"{author} you are on the game please wait for more {10-len(players)} players")
-        await channel.send(f"now there is {str(players.keys())}")
+        await channel.send(f"now there is {choices}")
 
     if len(players) == 2:
         for id in players_id:
