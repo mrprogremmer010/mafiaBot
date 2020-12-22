@@ -23,11 +23,10 @@ async def on_ready():
     print("bot is online")
 
 
-
+players_id = []
+players = {}
 @client.command()
-async def join(ctx):
-    players_id = []
-    players = {}
+async def join(ctx): 
     choice = ["murder","innocent","detective"]
     channel = ctx.channel
     author = ctx.author.mention
