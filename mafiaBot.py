@@ -31,15 +31,15 @@ async def join(ctx):
     else:
         players_id.append(author_id)
         # players.append(author)
+        pc_choice = random.choice(choice)
+        players[author] = pc_choice
         await channel.send(f"{author} you are on the game please wait for more {10-len(players)} players")
         await channel.send(f"now there is {players}")
 
     if len(players) == 2:
         for id in players_id:
             member = await client.fetch_user(author_id)
-            pc_choice = random.choice(choice)
             await member.send(f"{pc_choice}")
-            players[author] = pc_choice
     if players[author] == "murder":
         @client.command()
         async def kill(ctx):
