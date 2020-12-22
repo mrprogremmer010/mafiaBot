@@ -30,7 +30,7 @@ async def join(ctx):
         await channel.send(f"{author} you are on the game please wait for more {10-len(players)} players")
         await channel.send(f"now there is {players}")
 
-    if len(players) == 10:
+    if len(players) == 2:
         for id in players_id:
             member = await client.fetch_user(author_id)
             pc_choice = random.choice(choice)
