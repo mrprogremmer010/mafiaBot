@@ -28,7 +28,7 @@ async def join(ctx):
         await ctx.send(f"{author} you are on the game please wait for more {10 - len(players)} players ")
     else:
         players_id.append(author_id)
-        players.append(author)
+        players[author]
         await channel.send(f"{author} you are on the game please wait for more {10-len(players)} players")
         await channel.send(f"now there is {players}")
 
