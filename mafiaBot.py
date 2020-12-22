@@ -17,7 +17,7 @@ async def on_ready():
 @client.command()
 async def join(ctx):
     players_id = []
-    players = []
+    players = {}
     choice = ["murder","innocent","detective"]
     channel = ctx.channel
     author = ctx.author.mention
@@ -30,11 +30,13 @@ async def join(ctx):
         await channel.send(f"{author} you are on the game please wait for more {10-len(players)} players")
         await channel.send(f"now there is {players}")
 
-    if len(players) == 1:
+    if len(players) == 10:
         for id in players_id:
             member = await client.fetch_user(author_id)
-            await member.send(f"{random.choice(choice)}")
-    if author == "murder":
+            pc_choice = random.choice(choice)
+            await member.send(f"{pc_choice}")
+            players[author] = pc_choice
+    if players[author] == "murder":
         @client.command()
         async def kill(ctx):
             await ctx.message.delete()
@@ -51,7 +53,7 @@ async def join(ctx):
         othercount = 0
 
 
-    if author == "detective":
+    if players[author] == "detective":
         @client.command()
         async def km(ctx,member:discord.Member):
 
