@@ -44,8 +44,8 @@ async def join(ctx):
         print(players)
 
     if len(players) == 2:
-        for id in players:
-            member = await client.fetch_user(author_id)
+        for id in players_id:
+            member = await client.fetch_user(int(id))
             await member.send(f"{pc_choice}")
         if players[author] == "murder":
             @client.command()
