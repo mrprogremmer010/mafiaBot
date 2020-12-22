@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord.ext.tasks import loop
 import random
 import os
 
@@ -10,10 +11,15 @@ client = commands.Bot(command_prefix = "!")
 intents = discord.Intents(messages=True, guilds=True).all()
 intents.members = True
 
+@loop(seconds=1)
+async def chng_stat():
+	await client.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.playing, name=f'mafia with {len(client.guilds)} servers'))
+
+
 @client.event
 async def on_ready():
-    await client.change_presence(
-        activity=discord.Activity(type=discord.ActivityType.playing, name=f'mafia with {client.guilds} servers'))
+    chng_stat.start()
     print("bot is online")
 
 
