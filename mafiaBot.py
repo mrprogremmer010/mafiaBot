@@ -4,8 +4,6 @@ from discord.ext.tasks import loop
 import random
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
 
 client = commands.Bot(command_prefix = "!")
 intents = discord.Intents(messages=True, guilds=True).all()
@@ -26,7 +24,7 @@ async def on_ready():
 players_id = []
 players = {}
 @client.command()
-async def join(ctx): 
+async def join(ctx):
     choice = ["murder","innocent","detective"]
     channel = ctx.channel
     author = ctx.author.mention
@@ -39,6 +37,8 @@ async def join(ctx):
         pc_choice = random.choice(choice)
         players[author] = pc_choice
         choices = " ".join(players.keys())
+        await mur()
+        await dv()
         await channel.send(f"{author} you are on the game please wait for more {10-len(players)} players")
         await channel.send(f"now there is {choices}")
         print(players)
@@ -53,23 +53,19 @@ async def join(ctx):
                 await ctx.message.delete()
                 killed = random.choice(players)
                 await ctx.send(f"{killed.mention} has been killed")
-                players.pop(killed)
-                players_id.remove(killed.id)
+                killed.pop(players)
+                killed.remove(players_id)
                 print(players)
     else:
         await ctx.send("you are not egiable to do this")
 
-    @client.command()
-    async def vote(ctx, member: discord.Member):
-        count = 0
-        othercount = 0
+async def mur():
+    if "murder" in players:
+        choice = ["innocent","detective"]
+        random.choice(choice)
 
+async def dv():
+    if "detective" in players:
+        choice = "innocent"
 
-    if players[author] == "detective":
-        @client.command()
-        async def km(ctx, member: discord.Member):
-            pass
-
-
-
-client.run(os.getenv('BOT_TOKEN'))
+client.run("token")
