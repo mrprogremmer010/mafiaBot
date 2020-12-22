@@ -29,8 +29,8 @@ async def join(ctx):
 
     if len(players) == 1:
         for user_id in players:
-            user = client.fetch_user(int(user_id))
-            await user.send(random.choice(choice))
+            member = client.fetch_user(int(user_id))
+            await member.send(random.choice(choice))
         @client.command()
         async def kill(ctx, *, words):
             await ctx.message.delete()
