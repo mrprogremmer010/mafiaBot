@@ -1,6 +1,10 @@
 import discord
 from discord.ext import commands
 import random
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
 
 client = commands.Bot(command_prefix = "!")
 
@@ -38,4 +42,4 @@ async def join(ctx):
 
 
 
-client.run("NzkwOTY3NTI3MTE4MjA5MTA1.X-IT6Q.hy940SLSGZeYBMoKkoXyNLoFO5A")
+client.run(os.getenv('BOT_TOKEN'))
