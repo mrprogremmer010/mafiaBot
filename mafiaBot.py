@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = commands.Bot(command_prefix = "!")
+intents = discord.Intents(messages=True, guilds=True).all()
+intents.members = True
 
 @client.event
 async def on_ready():
