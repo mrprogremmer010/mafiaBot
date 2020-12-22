@@ -54,6 +54,7 @@ async def join(ctx):
             await ctx.send(f"{killed.mention} has been killed")
             killed.remove(players)
             killed.remove(players_id)
+            print(players)
     else:
         await ctx.send("you are not egiable to do this")
 
