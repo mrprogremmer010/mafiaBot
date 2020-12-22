@@ -42,20 +42,21 @@ async def join(ctx):
         choices = " ".join(players.keys())
         await channel.send(f"{author} you are on the game please wait for more {10-len(players)} players")
         await channel.send(f"now there is {choices}")
+        print(players)
 
     if len(players) == 2:
         for id in players_id:
             member = await client.fetch_user(author_id)
             await member.send(f"{pc_choice}")
-    if players[author] == "murder":
-        @client.command()
-        async def kill(ctx):
-            await ctx.message.delete()
-            killed = random.choice(players)
-            await ctx.send(f"{killed.mention} has been killed")
-            killed.remove(players)
-            killed.remove(players_id)
-            print(players)
+        if players[author] == "murder":
+            @client.command()
+            async def kill(ctx):
+                await ctx.message.delete()
+                killed = random.choice(players)
+                await ctx.send(f"{killed.mention} has been killed")
+                killed.remove(players)
+                killed.remove(players_id)
+                print(players)
     else:
         await ctx.send("you are not egiable to do this")
 
