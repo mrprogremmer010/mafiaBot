@@ -68,6 +68,7 @@ async def join(ctx):
     if players[author] == "detective":
         @client.command()
         async def km(ctx, member: discord.Member):
+            pass
 
 
 
