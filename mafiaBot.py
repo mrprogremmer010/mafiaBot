@@ -53,8 +53,8 @@ async def join(ctx):
                 await ctx.message.delete()
                 killed = random.choice(players)
                 await ctx.send(f"{killed.mention} has been killed")
-                killed.remove(players)
-                killed.remove(players_id)
+                players.remove(killed)
+                players_id.remove(killed.id)
                 print(players)
     else:
         await ctx.send("you are not egiable to do this")
