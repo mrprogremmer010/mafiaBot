@@ -25,14 +25,12 @@ async def join(ctx):
 
     if len(players) == 1:
         for user_id in players:
-            channel = await user_id.create_dm()
-            await channel.send(f"{random.choice(choice)}")
+            user = client.fetch_user(int(user_id))
+            await user.send(random.choice(choice))
         @client.command()
-        async def kill(ctx):
+        async def kill(ctx, *, words):
             await ctx.message.delete()
-            await ctx.send(f"{words}".format((words)))
-
-
+            await ctx.send(f"{words}")
 
 
 
