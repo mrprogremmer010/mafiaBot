@@ -30,7 +30,7 @@ async def join(ctx):
         await ctx.send(f"{author} you are on the game please wait for more {10 - len(players)} players ")
     else:
         players_id.append(author_id)
-        players[author]
+        # players.append(author)
         await channel.send(f"{author} you are on the game please wait for more {10-len(players)} players")
         await channel.send(f"now there is {players}")
 
@@ -52,14 +52,14 @@ async def join(ctx):
         await ctx.send("you are not egiable to do this")
 
     @client.command()
-    async def vote(ctx,member: discord.Member):
+    async def vote(ctx, member: discord.Member):
         count = 0
         othercount = 0
 
 
     if players[author] == "detective":
         @client.command()
-        async def km(ctx,member:discord.Member):
+        async def km(ctx, member: discord.Member):
 
 
 
