@@ -105,4 +105,4 @@ async def dv():
     if "detective" in players:
         choice = "innocent"
 
-client.run("NzkwOTY3NTI3MTE4MjA5MTA1.X-IT6Q.mxPjq3NKgLmwV93b3qePYH-rl9A")
+client.run("token")
