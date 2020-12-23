@@ -5,10 +5,10 @@ import random
 import os
 
 
-client = commands.Bot(command_prefix = "!")
+
 intents = discord.Intents(messages=True, guilds=True).all()
 intents.members = True
-
+client = commands.Bot(command_prefix="!",intents=intents)
 @loop(seconds=1)
 async def chng_stat():
 	await client.change_presence(
