@@ -47,17 +47,22 @@ async def join(ctx):
         for id in players_id:
             member = await client.fetch_user(int(id))
             await member.send(f"{pc_choice}")
+            await detective()
         if players[author] == "murder":
             @client.command()
             async def kill(ctx):
                 await ctx.message.delete()
-                killed = random.choice(players)
+                killed = random.choice(list(players.values()))
                 await ctx.send(f"{killed.mention} has been killed")
                 killed.pop(players)
                 killed.remove(players_id)
-                print(players)
-    else:
-        await ctx.send("you are not egiable to do this")
+                await ctx.send(f"{players}")
+        else:
+            await ctx.send("you are not egiable to do this")
+
+async def detective():
+    if players[author] == "detective":
+        ctx.send(f"{players}")
 
 async def mur():
     if "murder" in players:
