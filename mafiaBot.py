@@ -8,11 +8,10 @@ import os
 
 intents = discord.Intents(messages=True, guilds=True).all()
 intents.members = True
-client = commands.Bot(command_prefix="!",intents=intents)
+client = commands.Bot(command_prefix = "!",intents = intents)
 @loop(seconds=1)
 async def chng_stat():
-	await client.change_presence(
-        activity=discord.Activity(type=discord.ActivityType.playing, name=f'mafia with {len(client.guilds)} servers'))
+	await client.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=f'mafia with {len(client.guilds)} servers'))
 
 
 @client.event
@@ -63,7 +62,11 @@ async def join(ctx):
                 await ctx.send(f"{players}")
                 if players[author] != "murder":
                     await member.send("you are not egiable to do this")
-
+        if len(players) == 1:
+            await ctx.send("oof the killer has won the game")
+            players.clear()
+            players_id.clear()
+            
     @client.command()
     async def leave(ctx):
         await ctx.send("are you sure you want to leave? y/n")
@@ -102,4 +105,4 @@ async def dv():
     if "detective" in players:
         choice = "innocent"
 
-client.run("token")
+client.run("NzkwOTY3NTI3MTE4MjA5MTA1.X-IT6Q.mxPjq3NKgLmwV93b3qePYH-rl9A")
